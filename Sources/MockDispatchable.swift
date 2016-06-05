@@ -21,6 +21,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#if DEBUG
+
 import Foundation
 
 typealias Recorder = MockDispatchable.Recorder
@@ -90,3 +92,5 @@ func ==(lhs: Thread, rhs: Thread) -> Bool {
     default: return false
     }
 }
+
+#endif

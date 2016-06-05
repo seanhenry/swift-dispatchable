@@ -1,3 +1,5 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg?style=flat)
 # Dispatchable
 A simple library to help test asynchronous code.
 - All code is run on the main thread when running tests.
