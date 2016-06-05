@@ -32,7 +32,7 @@ class MockDispatchable: Dispatchable {
 
         enum Thread: Equatable {
             case Main
-            case Background
+            case Offload
             case After(Double)
 
             var delay: Double? {
@@ -42,45 +42,49 @@ class MockDispatchable: Dispatchable {
         }
 
         var isMainThread: Bool {
-            let lastThread = threadHistory.last ?? .Main
-            return lastThread != .Background
+            let lastThread = threadStack.last ?? .Main
+            return lastThread != .Offload
         }
-        private(set) var threadHistory = [Thread]()
-
-        private mutating func runOnMainThread() {
-            threadHistory.append(.Main)
-        }
-
-        private mutating func runOnBackgroundThread() {
-            threadHistory.append(.Background)
-        }
-
-        private mutating func runAfterDelay(delay: Double) {
-            threadHistory.append(.After(delay))
-        }
+        private(set) var threadStack = [Thread]()
     }
 
     var recorder = Recorder()
+    var didEnterThread: (Thread -> ())?
+    var didExitThread: (Thread -> ())?
 
     func main(task: Task) {
-        recorder.runOnMainThread()
+        push(.Main)
         task()
+        pop()
     }
 
     func offload(task: Task) {
-        recorder.runOnBackgroundThread()
+        push(.Offload)
         task()
+        pop()
     }
 
     func after(delay: Double, task: Task) {
-        recorder.runAfterDelay(delay)
+        push(.After(delay))
         task()
+        pop()
+    }
+
+    private func push(thread: Thread) {
+        recorder.threadStack.append(thread)
+        didEnterThread?(thread)
+    }
+
+    private func pop() -> Thread {
+        let last = recorder.threadStack.removeLast()
+        didExitThread?(last)
+        return last
     }
 }
 
 func ==(lhs: Thread, rhs: Thread) -> Bool {
     switch (lhs, rhs) {
-    case (.Main, .Main), (.Background, .Background): return true
+    case (.Main, .Main), (.Offload, .Offload): return true
     case (.After(let lhsDelay), .After(let rhsDelay)):
         return lhsDelay == rhsDelay
     default: return false

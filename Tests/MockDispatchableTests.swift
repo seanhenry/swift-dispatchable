@@ -33,7 +33,7 @@ class MockDispatchable_Recorder_ThreadTests: XCTestCase {
     }
 
     func test_thread_shouldNotBeEqual_whenDifferentTypes() {
-        XCTAssertNotEqual(Thread.Main, Thread.Background)
+        XCTAssertNotEqual(Thread.Main, Thread.Offload)
     }
 
     func test_thread_shouldBeEqual_whenBothMain() {
@@ -41,7 +41,7 @@ class MockDispatchable_Recorder_ThreadTests: XCTestCase {
     }
 
     func test_thread_shouldBeEqual_whenBothBackground() {
-        XCTAssertEqual(Thread.Background, Thread.Background)
+        XCTAssertEqual(Thread.Offload, Thread.Offload)
     }
 
     func test_thread_shouldNotBeEqual_whenAfterDelaysAreDifferent() {
@@ -77,21 +77,26 @@ class MockDispatchableTests: XCTestCase {
         XCTAssert(recorder.isMainThread)
     }
 
-    func test_recorder_recordsThreadHistory() {
+    func test_recorder_shouldNotRecordToThreadStack_whenNotNested() {
         dispatchable.after(1) {}
         dispatchable.offload {}
         dispatchable.main {}
-        let expectedHistory = [Thread.After(1), Thread.Background, Thread.Main]
-        XCTAssertEqual(recorder.threadHistory, expectedHistory)
+        XCTAssertEqual(recorder.threadStack.count, 0)
+    }
+
+    func test_recorder_shouldRecordToThreadStack_whenNested() {
+        dispatchable.after(1) {
+            XCTAssertEqual(self.recorder.threadStack, [.After(1)])
+            self.dispatchable.offload {
+                XCTAssertEqual(self.recorder.threadStack, [.After(1), .Offload])
+                self.dispatchable.main {
+                    XCTAssertEqual(self.recorder.threadStack, [.After(1), .Offload, .Main])
+                }
+            }
+        }
     }
 
     // MARK: - main
-
-    func test_main_shouldRecordMainThread_afterOffloading() {
-        dispatchable.offload {}
-        dispatchable.main {}
-        XCTAssert(recorder.isMainThread)
-    }
 
     func test_main_shouldRunTaskImmediately() {
         var didRunTask = false
@@ -101,12 +106,22 @@ class MockDispatchableTests: XCTestCase {
         XCTAssert(didRunTask)
     }
 
-    // MARK: - offload
-
-    func test_offload_shouldRecordOffMainThread() {
-        dispatchable.offload {}
-        XCTAssertFalse(recorder.isMainThread)
+    func test_main_shouldRecordMainThread_afterOffloading() {
+        dispatchable.offload {
+            self.dispatchable.main {
+                XCTAssert(self.recorder.isMainThread)
+            }
+        }
     }
+
+    func test_main_shouldCallBack_inCorrectOrder() {
+        let callbacks = collectCallbacks { task in
+            self.dispatchable.main(task)
+        }
+        XCTAssertEqual(callbacks, ["enter:main", "task", "exit:main"])
+    }
+
+    // MARK: - offload
 
     func test_offload_shouldRunTaskImmediately() {
         var didRunTask = false
@@ -116,13 +131,21 @@ class MockDispatchableTests: XCTestCase {
         XCTAssert(didRunTask)
     }
 
-    // MARK: - after
-
-    func test_after_shouldRecordMainThread_afterOffloading() {
-        dispatchable.offload {}
-        dispatchable.after(1) {}
+    func test_offload_shouldRecordOffMainThread() {
+        dispatchable.offload {
+            XCTAssertFalse(self.recorder.isMainThread)
+        }
         XCTAssert(recorder.isMainThread)
     }
+
+    func test_offload_shouldCallBack_inCorrectOrder() {
+        let callbacks = collectCallbacks { task in
+            self.dispatchable.offload(task)
+        }
+        XCTAssertEqual(callbacks, ["enter:offload", "task", "exit:offload"])
+    }
+
+    // MARK: - after
 
     func test_after_shouldRunTaskImmediately() {
         var didRunTask = false
@@ -130,5 +153,44 @@ class MockDispatchableTests: XCTestCase {
             didRunTask = true
         }
         XCTAssert(didRunTask)
+    }
+
+    func test_after_shouldRecordMainThread_afterOffloading() {
+        dispatchable.offload {
+            self.dispatchable.after(1) {
+                XCTAssert(self.recorder.isMainThread)
+            }
+        }
+    }
+
+    func test_after_shouldCallBack_inCorrectOrder() {
+        let callbacks = collectCallbacks { task in
+            self.dispatchable.after(1, task: task)
+        }
+        XCTAssertEqual(callbacks, ["enter:after", "task", "exit:after"])
+    }
+
+    // MARK: - Helpers
+
+    private func collectCallbacks(task: (() -> ()) -> ()) -> [String] {
+        var result = [String]()
+        dispatchable.didEnterThread = { t in
+            result.append("enter:" + self.threadToString(t))
+        }
+        dispatchable.didExitThread = { t in
+            result.append("exit:" + self.threadToString(t))
+        }
+        task {
+            result.append("task")
+        }
+        return result
+    }
+
+    private func threadToString(thread: Thread) -> String {
+        switch thread {
+        case .Main: return "main"
+        case .Offload: return "offload"
+        case .After: return "after"
+        }
     }
 }

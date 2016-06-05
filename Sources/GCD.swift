@@ -27,7 +27,7 @@ public class GCD: Dispatchable {
 
     private let customQueue: dispatch_queue_t?
     var queue: dispatch_queue_t {
-        return customQueue ?? dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+        return customQueue ?? dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)
     }
 
     public init(queue: dispatch_queue_t? = nil) {

@@ -46,9 +46,9 @@ class GCDTests: XCTestCase {
 
     // MARK: - queue
 
-    func test_queue_shouldBeGlobalQueueWithDefaultQOSPriority() {
+    func test_queue_shouldBeGlobalQueueWithUtilityQOSPriority() {
         let priority = dispatch_queue_get_qos_class(gcd.queue, nil)
-        XCTAssertEqual(priority, QOS_CLASS_DEFAULT)
+        XCTAssertEqual(priority, QOS_CLASS_UTILITY)
     }
     
     // MARK: - main
@@ -83,7 +83,7 @@ class GCDTests: XCTestCase {
     func test_offload_shouldRunTaskOnDefaultQOSQueue() {
         let expectation = expectationWithDescription(#function)
         gcd.offload {
-            XCTAssertEqual(qos_class_self(), QOS_CLASS_DEFAULT)
+            XCTAssertEqual(qos_class_self(), QOS_CLASS_UTILITY)
             expectation.fulfill()
         }
         waitForTask()
