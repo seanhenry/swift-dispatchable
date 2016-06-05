@@ -35,6 +35,21 @@ class GCDTests: XCTestCase {
         didRunTask = false
         gcd = GCD()
     }
+
+    // MARK: - init
+
+    func test_init_shouldSetQueue() {
+        gcd = GCD(queue: dispatch_queue_create("com.test", DISPATCH_QUEUE_SERIAL))
+        let label = String(CString: dispatch_queue_get_label(gcd.queue), encoding: NSUTF8StringEncoding)
+        XCTAssertEqual(label, "com.test")
+    }
+
+    // MARK: - queue
+
+    func test_queue_shouldBeGlobalQueueWithDefaultQOSPriority() {
+        let priority = dispatch_queue_get_qos_class(gcd.queue, nil)
+        XCTAssertEqual(priority, QOS_CLASS_DEFAULT)
+    }
     
     // MARK: - main
     
@@ -69,6 +84,17 @@ class GCDTests: XCTestCase {
         let expectation = expectationWithDescription(#function)
         gcd.offload {
             XCTAssertEqual(qos_class_self(), QOS_CLASS_DEFAULT)
+            expectation.fulfill()
+        }
+        waitForTask()
+    }
+
+    func test_offload_shouldRunTaskOnCustomQueue() {
+        let queue = dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
+        gcd = GCD(queue: queue)
+        let expectation = expectationWithDescription(#function)
+        gcd.offload {
+            XCTAssertEqual(qos_class_self(), QOS_CLASS_BACKGROUND)
             expectation.fulfill()
         }
         waitForTask()

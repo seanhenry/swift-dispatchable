@@ -25,12 +25,21 @@ import Foundation
 
 public class GCD: Dispatchable {
 
+    private let customQueue: dispatch_queue_t?
+    var queue: dispatch_queue_t {
+        return customQueue ?? dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+    }
+
+    public init(queue: dispatch_queue_t? = nil) {
+        customQueue = queue
+    }
+
     public func main(task: Task) {
         dispatch_async(dispatch_get_main_queue(), task)
     }
 
     public func offload(task: Task) {
-        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), task)
+        dispatch_async(queue, task)
     }
 
     public func after(delay: Double, task: Task) {

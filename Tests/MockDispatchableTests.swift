@@ -24,6 +24,41 @@
 import XCTest
 @testable import Dispatchable
 
+class MockDispatchable_Recorder_ThreadTests: XCTestCase {
+
+    // MARK: - ==
+
+    func test_thread_shouldBeEqual_whenAfterDelayMatches() {
+        XCTAssertEqual(Thread.After(1.3), Thread.After(1.3))
+    }
+
+    func test_thread_shouldNotBeEqual_whenDifferentTypes() {
+        XCTAssertNotEqual(Thread.Main, Thread.Background)
+    }
+
+    func test_thread_shouldBeEqual_whenBothMain() {
+        XCTAssertEqual(Thread.Main, Thread.Main)
+    }
+
+    func test_thread_shouldBeEqual_whenBothBackground() {
+        XCTAssertEqual(Thread.Background, Thread.Background)
+    }
+
+    func test_thread_shouldNotBeEqual_whenAfterDelaysAreDifferent() {
+        XCTAssertNotEqual(Thread.After(2), Thread.After(3))
+    }
+
+    // MARK: - delay
+
+    func test_delay_shouldReturnNil_whenNotAfter() {
+        XCTAssertNil(Thread.Main.delay)
+    }
+
+    func test_delay_shouldReturnDelay_whenAfter() {
+        XCTAssertEqual(Thread.After(1.1).delay, 1.1)
+    }
+}
+
 class MockDispatchableTests: XCTestCase {
 
     var dispatchable: MockDispatchable!
@@ -48,34 +83,6 @@ class MockDispatchableTests: XCTestCase {
         dispatchable.main {}
         let expectedHistory = [Thread.After(1), Thread.Background, Thread.Main]
         XCTAssertEqual(recorder.threadHistory, expectedHistory)
-    }
-
-    // MARK: - Thread ==
-
-    func test_thread_shouldBeEqual_whenAfterDelayMatches() {
-        XCTAssertEqual(Thread.After(1.3), Thread.After(1.3))
-    }
-
-    func test_thread_shouldNotBeEqual_whenDifferentTypes() {
-        XCTAssertNotEqual(Thread.Main, Thread.Background)
-    }
-
-    func test_thread_shouldBeEqual_whenBothMain() {
-        XCTAssertEqual(Thread.Main, Thread.Main)
-    }
-
-    func test_thread_shouldBeEqual_whenBothBackground() {
-        XCTAssertEqual(Thread.Background, Thread.Background)
-    }
-
-    // MARK: - Thread.delay
-
-    func test_thread_delay_shouldReturnNil_whenNotAfter() {
-        XCTAssertNil(Thread.Main.delay)
-    }
-
-    func test_thread_delay_shouldReturnDelay_whenAfter() {
-        XCTAssertEqual(Thread.After(1.1).delay, 1.1)
     }
 
     // MARK: - main
