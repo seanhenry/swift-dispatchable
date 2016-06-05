@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		148EA73C1D042508002FE5AC /* MockDispatchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */; };
 		148EA73E1D04251F002FE5AC /* MockDispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73D1D04251F002FE5AC /* MockDispatchable.swift */; };
+		148EA7471D043F59002FE5AC /* DispatchableMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 148EA7461D043F59002FE5AC /* DispatchableMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		148EA74E1D043F59002FE5AC /* Dispatchable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 148EA7441D043F59002FE5AC /* Dispatchable.framework */; };
+		148EA75B1D043F6D002FE5AC /* GCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAFC1D0420E50017FCA4 /* GCDTests.swift */; };
+		148EA75C1D043F6D002FE5AC /* MockDispatchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */; };
+		148EA75D1D043F71002FE5AC /* Dispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAF81D04209A0017FCA4 /* Dispatchable.swift */; };
+		148EA75E1D043F71002FE5AC /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAFA1D0420B30017FCA4 /* GCD.swift */; };
+		148EA75F1D043F71002FE5AC /* MockDispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73D1D04251F002FE5AC /* MockDispatchable.swift */; };
 		14CBDAE21D0417310017FCA4 /* Dispatchable.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CBDAE11D0417310017FCA4 /* Dispatchable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14CBDAE91D0417310017FCA4 /* Dispatchable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CBDADE1D0417310017FCA4 /* Dispatchable.framework */; };
 		14CBDAF91D04209A0017FCA4 /* Dispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAF81D04209A0017FCA4 /* Dispatchable.swift */; };
@@ -17,6 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		148EA74F1D043F59002FE5AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14CBDAD51D0417310017FCA4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 148EA7431D043F59002FE5AC;
+			remoteInfo = DispatchableMacOS;
+		};
 		14CBDAEA1D0417310017FCA4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 14CBDAD51D0417310017FCA4 /* Project object */;
@@ -29,6 +43,11 @@
 /* Begin PBXFileReference section */
 		148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatchableTests.swift; sourceTree = "<group>"; };
 		148EA73D1D04251F002FE5AC /* MockDispatchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatchable.swift; sourceTree = "<group>"; };
+		148EA7441D043F59002FE5AC /* Dispatchable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dispatchable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		148EA7461D043F59002FE5AC /* DispatchableMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DispatchableMacOS.h; sourceTree = "<group>"; };
+		148EA7481D043F59002FE5AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		148EA74D1D043F59002FE5AC /* DispatchableMacOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DispatchableMacOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		148EA7541D043F59002FE5AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CBDADE1D0417310017FCA4 /* Dispatchable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dispatchable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CBDAE11D0417310017FCA4 /* Dispatchable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dispatchable.h; sourceTree = "<group>"; };
 		14CBDAE31D0417310017FCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +59,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		148EA7401D043F59002FE5AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148EA74A1D043F59002FE5AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148EA74E1D043F59002FE5AC /* Dispatchable.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14CBDADA1D0417310017FCA4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,11 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		148EA7451D043F59002FE5AC /* DispatchableMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				148EA7461D043F59002FE5AC /* DispatchableMacOS.h */,
+				148EA7481D043F59002FE5AC /* Info.plist */,
+			);
+			path = DispatchableMacOS;
+			sourceTree = "<group>";
+		};
+		148EA7511D043F59002FE5AC /* DispatchableMacOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				148EA7541D043F59002FE5AC /* Info.plist */,
+			);
+			path = DispatchableMacOSTests;
+			sourceTree = "<group>";
+		};
 		14CBDAD41D0417310017FCA4 = {
 			isa = PBXGroup;
 			children = (
 				14CBDAE01D0417310017FCA4 /* Sources */,
 				14CBDAEC1D0417310017FCA4 /* Tests */,
+				148EA7451D043F59002FE5AC /* DispatchableMacOS */,
+				148EA7511D043F59002FE5AC /* DispatchableMacOSTests */,
 				14CBDADF1D0417310017FCA4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +125,8 @@
 			children = (
 				14CBDADE1D0417310017FCA4 /* Dispatchable.framework */,
 				14CBDAE81D0417310017FCA4 /* DispatchableTests.xctest */,
+				148EA7441D043F59002FE5AC /* Dispatchable.framework */,
+				148EA74D1D043F59002FE5AC /* DispatchableMacOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +156,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		148EA7411D043F59002FE5AC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148EA7471D043F59002FE5AC /* DispatchableMacOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14CBDADB1D0417310017FCA4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,6 +175,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		148EA7431D043F59002FE5AC /* DispatchableMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148EA7551D043F59002FE5AC /* Build configuration list for PBXNativeTarget "DispatchableMacOS" */;
+			buildPhases = (
+				148EA73F1D043F59002FE5AC /* Sources */,
+				148EA7401D043F59002FE5AC /* Frameworks */,
+				148EA7411D043F59002FE5AC /* Headers */,
+				148EA7421D043F59002FE5AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DispatchableMacOS;
+			productName = DispatchableMacOS;
+			productReference = 148EA7441D043F59002FE5AC /* Dispatchable.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		148EA74C1D043F59002FE5AC /* DispatchableMacOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 148EA7581D043F59002FE5AC /* Build configuration list for PBXNativeTarget "DispatchableMacOSTests" */;
+			buildPhases = (
+				148EA7491D043F59002FE5AC /* Sources */,
+				148EA74A1D043F59002FE5AC /* Frameworks */,
+				148EA74B1D043F59002FE5AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				148EA7501D043F59002FE5AC /* PBXTargetDependency */,
+			);
+			name = DispatchableMacOSTests;
+			productName = DispatchableMacOSTests;
+			productReference = 148EA74D1D043F59002FE5AC /* DispatchableMacOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		14CBDADD1D0417310017FCA4 /* Dispatchable */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14CBDAF21D0417310017FCA4 /* Build configuration list for PBXNativeTarget "Dispatchable" */;
@@ -158,6 +257,12 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Sean Henry";
 				TargetAttributes = {
+					148EA7431D043F59002FE5AC = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					148EA74C1D043F59002FE5AC = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					14CBDADD1D0417310017FCA4 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -180,11 +285,27 @@
 			targets = (
 				14CBDADD1D0417310017FCA4 /* Dispatchable */,
 				14CBDAE71D0417310017FCA4 /* DispatchableTests */,
+				148EA7431D043F59002FE5AC /* DispatchableMacOS */,
+				148EA74C1D043F59002FE5AC /* DispatchableMacOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		148EA7421D043F59002FE5AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148EA74B1D043F59002FE5AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14CBDADC1D0417310017FCA4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +323,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		148EA73F1D043F59002FE5AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148EA75E1D043F71002FE5AC /* GCD.swift in Sources */,
+				148EA75D1D043F71002FE5AC /* Dispatchable.swift in Sources */,
+				148EA75F1D043F71002FE5AC /* MockDispatchable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		148EA7491D043F59002FE5AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				148EA75B1D043F6D002FE5AC /* GCDTests.swift in Sources */,
+				148EA75C1D043F6D002FE5AC /* MockDispatchableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		14CBDAD91D0417310017FCA4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +364,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		148EA7501D043F59002FE5AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 148EA7431D043F59002FE5AC /* DispatchableMacOS */;
+			targetProxy = 148EA74F1D043F59002FE5AC /* PBXContainerItemProxy */;
+		};
 		14CBDAEB1D0417310017FCA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 14CBDADD1D0417310017FCA4 /* Dispatchable */;
@@ -232,6 +377,76 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		148EA7561D043F59002FE5AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DispatchableMacOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.Dispatchable;
+				PRODUCT_NAME = Dispatchable;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		148EA7571D043F59002FE5AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = DispatchableMacOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.Dispatchable;
+				PRODUCT_NAME = Dispatchable;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		148EA7591D043F59002FE5AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DispatchableMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.DispatchableMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		148EA75A1D043F59002FE5AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = DispatchableMacOSTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.DispatchableMacOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		14CBDAF01D0417310017FCA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -381,6 +596,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		148EA7551D043F59002FE5AC /* Build configuration list for PBXNativeTarget "DispatchableMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148EA7561D043F59002FE5AC /* Debug */,
+				148EA7571D043F59002FE5AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		148EA7581D043F59002FE5AC /* Build configuration list for PBXNativeTarget "DispatchableMacOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				148EA7591D043F59002FE5AC /* Debug */,
+				148EA75A1D043F59002FE5AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		14CBDAD81D0417310017FCA4 /* Build configuration list for PBXProject "Dispatchable" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
