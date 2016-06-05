@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		148EA73C1D042508002FE5AC /* MockDispatchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */; };
+		148EA73E1D04251F002FE5AC /* MockDispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148EA73D1D04251F002FE5AC /* MockDispatchable.swift */; };
 		14CBDAE21D0417310017FCA4 /* Dispatchable.h in Headers */ = {isa = PBXBuildFile; fileRef = 14CBDAE11D0417310017FCA4 /* Dispatchable.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		14CBDAE91D0417310017FCA4 /* Dispatchable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14CBDADE1D0417310017FCA4 /* Dispatchable.framework */; };
-		14CBDAEE1D0417310017FCA4 /* DispatchableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAED1D0417310017FCA4 /* DispatchableTests.swift */; };
+		14CBDAF91D04209A0017FCA4 /* Dispatchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAF81D04209A0017FCA4 /* Dispatchable.swift */; };
+		14CBDAFB1D0420B30017FCA4 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAFA1D0420B30017FCA4 /* GCD.swift */; };
+		14CBDAFD1D0420E50017FCA4 /* GCDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CBDAFC1D0420E50017FCA4 /* GCDTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +27,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatchableTests.swift; sourceTree = "<group>"; };
+		148EA73D1D04251F002FE5AC /* MockDispatchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatchable.swift; sourceTree = "<group>"; };
 		14CBDADE1D0417310017FCA4 /* Dispatchable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dispatchable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CBDAE11D0417310017FCA4 /* Dispatchable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dispatchable.h; sourceTree = "<group>"; };
 		14CBDAE31D0417310017FCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14CBDAE81D0417310017FCA4 /* DispatchableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DispatchableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		14CBDAED1D0417310017FCA4 /* DispatchableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchableTests.swift; sourceTree = "<group>"; };
 		14CBDAEF1D0417310017FCA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14CBDAF81D04209A0017FCA4 /* Dispatchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatchable.swift; sourceTree = "<group>"; };
+		14CBDAFA1D0420B30017FCA4 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
+		14CBDAFC1D0420E50017FCA4 /* GCDTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,9 @@
 			children = (
 				14CBDAE11D0417310017FCA4 /* Dispatchable.h */,
 				14CBDAE31D0417310017FCA4 /* Info.plist */,
+				14CBDAF81D04209A0017FCA4 /* Dispatchable.swift */,
+				14CBDAFA1D0420B30017FCA4 /* GCD.swift */,
+				148EA73D1D04251F002FE5AC /* MockDispatchable.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -80,8 +91,9 @@
 		14CBDAEC1D0417310017FCA4 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				14CBDAED1D0417310017FCA4 /* DispatchableTests.swift */,
 				14CBDAEF1D0417310017FCA4 /* Info.plist */,
+				14CBDAFC1D0420E50017FCA4 /* GCDTests.swift */,
+				148EA73B1D042508002FE5AC /* MockDispatchableTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -194,6 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14CBDAFB1D0420B30017FCA4 /* GCD.swift in Sources */,
+				14CBDAF91D04209A0017FCA4 /* Dispatchable.swift in Sources */,
+				148EA73E1D04251F002FE5AC /* MockDispatchable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +216,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14CBDAEE1D0417310017FCA4 /* DispatchableTests.swift in Sources */,
+				14CBDAFD1D0420E50017FCA4 /* GCDTests.swift in Sources */,
+				148EA73C1D042508002FE5AC /* MockDispatchableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +326,7 @@
 		14CBDAF31D0417310017FCA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -320,12 +337,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = codes.seanhenry.Dispatchable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		14CBDAF41D0417310017FCA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -378,6 +397,7 @@
 				14CBDAF41D0417310017FCA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		14CBDAF51D0417310017FCA4 /* Build configuration list for PBXNativeTarget "DispatchableTests" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +406,7 @@
 				14CBDAF71D0417310017FCA4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
